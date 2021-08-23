@@ -1,0 +1,22 @@
+{% extends 'management/base.html' %}
+{% block content %}
+<div class="container p-5">
+<div class="card mb-3">
+    <img
+      src="https://mdbootstrap.com/img/new/slides/041.jpg"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{object.entry_title}}</h5>
+      <p class="card-text">
+        <small class="text-muted">By {{object.entry_author}}-{{object.entry_date}}}</small>
+      </p>
+      <p class="card-text">
+        {{object.entry_text}}
+      </p>
+    </div>
+  </div>
+</div>
+  
+  {% endblock %}

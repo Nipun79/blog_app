@@ -1,0 +1,48 @@
+{% extends 'management/base.html' %}
+
+{% block content %} 
+
+
+<div class="container p-5">
+<div class="row card-group" >
+{% for entry in blog_entries %}
+<div class="col-4 p-2">
+    <div class="card h-100" style="width: 18rem;">
+        <img
+            src="https://mdbootstrap.com/img/new/standard/city/062.jpg"
+            class="card-img-top"
+            alt="..."
+         />
+        <div class="card-body">
+         <h5 class="card-title">{{ entry.entry_title }}</h5>
+         <small class="text-muted">By {{ entry.entry_author}} -   {{ entry.entry_date }}</small>
+        <p class="card-text">
+            {{ entry.entry_text|truncatechars:100  }}
+        </p>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'entry-name' entry.pk %} " style="text-decoration:None;">Read More</a>
+        </div>
+    </div>    
+</div>
+{% endfor %}
+</div>
+{% if is_paginated %}
+<div class="text-center">
+  <nav aria-label="...">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+      <li class="page-item ">
+        <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1" >Previous</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>   
+{% endif %}
+</div>
+{% endblock %}
